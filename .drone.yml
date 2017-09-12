@@ -2,7 +2,7 @@ pipeline:
   dep:
     image: plugins/docker
     repo: metalmatze/dep
-    context: './dep'
+    dockerfile: dep/Dockerfile
     secrets: [ docker_username, docker_password ]
     tag: [ latest ]
     when:
