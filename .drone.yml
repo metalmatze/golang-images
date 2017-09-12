@@ -1,0 +1,10 @@
+pipeline:
+  dep:
+    image: plugins/docker
+    repo: metalmatze/dep
+    context: './dep'
+    secrets: [ docker_username, docker_password ]
+    tag: [ latest ]
+    when:
+      branch: master
+      event: push
