@@ -5,7 +5,7 @@ pipeline:
     repo: metalmatze/dep
     dockerfile: dep/Dockerfile
     secrets: [ docker_username, docker_password ]
-    tag: [ latest ]
+    tag: [ latest, 1.9 ]
     when:
       branch: master
       event: push
@@ -16,7 +16,7 @@ pipeline:
     repo: metalmatze/gometalinter
     dockerfile: gometalinter/Dockerfile
     secrets: [ docker_username, docker_password ]
-    tag: [ latest ]
+    tag: [ latest, 1.9 ]
     when:
       branch: master
       event: push
