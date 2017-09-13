@@ -1,8 +1,20 @@
 pipeline:
   dep:
+    group: docker
     image: plugins/docker
     repo: metalmatze/dep
     dockerfile: dep/Dockerfile
+    secrets: [ docker_username, docker_password ]
+    tag: [ latest ]
+    when:
+      branch: master
+      event: push
+
+  gometalinter:
+    group: docker
+    image: plugins/docker
+    repo: metalmatze/gometalinter
+    dockerfile: gometalinter/Dockerfile
     secrets: [ docker_username, docker_password ]
     tag: [ latest ]
     when:
