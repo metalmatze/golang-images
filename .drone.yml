@@ -20,3 +20,14 @@ pipeline:
     when:
       branch: master
       event: push
+
+  wwhrd:
+    group: docker
+    image: plugins/docker
+    repo: metalmatze/wwhrd
+    dockerfile: wwhrd/Dockerfile
+    secrets: [ docker_username, docker_password ]
+    tag: [ latest, 1.9 ]
+    when:
+      branch: master
+      event: push
