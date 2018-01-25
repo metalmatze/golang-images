@@ -1,7 +1,7 @@
-FROM golang:1.9 as builder
-RUN go get -v -u github.com/golang/dep/cmd/dep
-RUN CGO_ENABLED=0 go install -v -ldflags '-w -extldflags '-static'' github.com/golang/dep/cmd/dep
+FROM alpine as builder
+RUN cd /tmp && wget https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64
 
-FROM golang:1.9
-COPY --from=builder /go/bin/dep /usr/bin/
+FROM alpine
+COPY --from=builder /tmp/dep-linux-amd64 /usr/bin/dep
+RUN chmod +x /usr/bin/dep
 ENTRYPOINT ["/usr/bin/dep"]
