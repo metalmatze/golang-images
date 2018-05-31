@@ -10,6 +10,17 @@ pipeline:
       branch: master
       event: push
 
+  golangci-lint:
+    group: docker
+    image: plugins/docker
+    repo: metalmatze/golangci-lint
+    dockerfile: golangci-lint/Dockerfile
+    secrets: [ docker_username, docker_password ]
+    tag: [ latest, 1.3.7 ]
+    when:
+      branch: master
+      event: push
+
   gometalinter:
     group: docker
     image: plugins/docker
